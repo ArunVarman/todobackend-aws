@@ -1090,7 +1090,7 @@ Resources:
   ApplicationCluster:
     Type: AWS::ECS::Cluster
     Properties:
-      ClusterName: !Sub: ${AWS::StackName}-cluster
+      ClusterName: !Sub ${AWS::StackName}-cluster
   ApplicationAutoscalingLaunchConfiguration:
     Type: AWS::AutoScaling::LaunchConfiguration
     Metadata:
