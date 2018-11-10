@@ -657,7 +657,6 @@ Resources:
   MigrateTaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      #Family: todobackend-migrate
       Family: !Sub ${AWS::StackName}-migrate
       TaskRoleArn: !Sub ${ApplicationTaskRole.Arn}
       ContainerDefinitions:
@@ -827,7 +826,6 @@ Resources:
   ApplicationTaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      #Family: todobackend
       Family: !Ref AWS::StackName
       TaskRoleArn: !Sub ${ApplicationTaskRole.Arn}
       Volumes:
@@ -1092,7 +1090,6 @@ Resources:
   ApplicationCluster:
     Type: AWS::ECS::Cluster
     Properties:
-      #ClusterName: todobackend-cluster
       ClusterName: !Sub: ${AWS::StackName}-cluster
   ApplicationAutoscalingLaunchConfiguration:
     Type: AWS::AutoScaling::LaunchConfiguration
