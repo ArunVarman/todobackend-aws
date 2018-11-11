@@ -1023,15 +1023,15 @@ Resources:
       GroupDescription: !Sub ${AWS::StackName} Application Autoscaling Security Group
       VpcId: !Ref VpcId
       SecurityGroupIngress:
-        - IpProtocol: udp
-          FromPort: 2000
-          ToPort: 2000
-          CidrIp: 172.31.0.0/16
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
           CidrIp: 0.0.0.0/0
       SecurityGroupEgress:
+        - IpProtocol: udp
+          FromPort: 2000
+          ToPort: 2000
+          CidrIp: 172.31.0.0/16
         - IpProtocol: udp
           FromPort: 53
           ToPort: 53
