@@ -677,6 +677,8 @@ Resources:
               Value: todobackend/credentials
             - Name: AWS_DEFAULT_REGION
               Value: !Ref AWS::Region
+            - Name: AWS_XRAY_DAEMON_ADDRESS
+              Value: xray.services.dockerinaws.org:2000
           Command:
             - python3
             - manage.py
@@ -1021,6 +1023,10 @@ Resources:
       GroupDescription: !Sub ${AWS::StackName} Application Autoscaling Security Group
       VpcId: !Ref VpcId
       SecurityGroupIngress:
+        - IpProtocol: udp
+          FromPort: 2000
+          ToPort: 2000
+          CidrIp: 172.31.0.0/16
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
