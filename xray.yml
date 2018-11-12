@@ -2,19 +2,11 @@ AWSTemplateFormatVersion: "2010-09-09"
 
 Description: X-Ray Daemon
 
-Parameters:
-  ApplicationSubnets:
-    Type: List<AWS::EC2::Subnet::Id>
-    Description: Target subnets for EC2 instances
-  VpcId:
-    Type: AWS::EC2::VPC::Id
-    Description: Target VPC
-
 Resources:
   ApplicationSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      VpcId: !Ref VpcId
+      VpcId: vpc-0b509a6e
       GroupDescription: !Sub ${AWS::StackName} Application Security Group
       SecurityGroupIngress:
         - IpProtocol: udp
@@ -56,7 +48,9 @@ Resources:
           AssignPublicIp: ENABLED
           SecurityGroups:
             - !Ref ApplicationSecurityGroup
-          Subnets: !Ref ApplicationSubnets
+          Subnets:
+            - subnet-fb40848c
+            - subnet-5806a03d
       DeploymentConfiguration:
           MinimumHealthyPercent: 100
           MaximumPercent: 200
@@ -164,4 +158,4 @@ Resources:
     Properties:
       Name: services.dockerinaws.org
       Description: services.dockerinaws.org namespace
-      Vpc: !Ref VpcId
+      Vpc: vpc-0b509a6e
