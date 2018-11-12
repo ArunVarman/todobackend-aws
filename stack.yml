@@ -677,8 +677,6 @@ Resources:
               Value: todobackend/credentials
             - Name: AWS_DEFAULT_REGION
               Value: !Ref AWS::Region
-            - Name: AWS_XRAY_DAEMON_ADDRESS
-              Value: xray.services.dockerinaws.org:2000
           Command:
             - python3
             - manage.py
@@ -855,6 +853,8 @@ Resources:
               Value: todobackend/credentials
             - Name: AWS_DEFAULT_REGION
               Value: !Ref AWS::Region
+            - Name: AWS_XRAY_DAEMON_ADDRESS
+              Value: xray.services.dockerinaws.org:2000
           Command:
             - uwsgi
             - --http=0.0.0.0:8000
